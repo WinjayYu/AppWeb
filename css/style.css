@@ -1,0 +1,395 @@
+.container {
+  background-color: #f4f5f7;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.container .header {
+  padding: 20px 15px 15px;
+  background-color: #fff;
+}
+
+.container  .q_title {
+  color: #fff;
+  font-size: 19px;
+  font-weight: bold;
+  background-color: #53a4f4;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+.container .header .call {
+  margin-top: 10px;
+  color: #8a96a6;
+  line-height: 23px;
+}
+
+.container .content .target{
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.container .content .target .target_name {
+  padding: 20px 15px 15px;
+  font-size: 17px;
+  color: #4d526c;
+  line-height: 15px;
+  border-bottom: 1px #d2d2d2 solid;
+}
+
+.container .content .target .fl {
+  width:  50%;
+  padding: 20px 0 0 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.container .content .target label{
+  vertical-align: 1px;
+}
+
+.container .item {
+  background-color: #fff;
+  padding-top: 15px;
+  margin-top: 6px;
+  padding-bottom: 10px;
+}
+
+.container .item .ques_title {
+  line-height: 20px;
+  border-bottom: 1px #d2d2d2 solid;
+  padding: 0 15px 10px;
+  font-size: 17px;
+  color: #4d526c;
+}
+
+.container .wrap_input {
+  padding: 0 15px;
+}
+
+.container .ques_content {
+  margin-top: 10px;
+  color: #4d526c;
+  font-size: 15px;
+}
+
+
+.container .item .grade_number {
+  float: left;
+  width: 10%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+
+.container .item .ques_sub_title {
+  padding: 0 15px;
+  color: #4d526c;
+}
+
+.container .selected {
+  background-color: #378efa;
+  color: #fff;
+}
+
+.container textarea {
+  width: 100%;
+  margin-top: 20px;
+  height: 50px;
+}
+
+.form_submit {
+  background-color: #fff;
+  padding: 20px 0;
+}
+
+input[type="submit"] {
+  width: 90%;
+  background-color: #378efa;
+  margin-left: 5%;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  border-radius: 2px;
+}
+
+input[type="radio"] {
+  vertical-align: -1.5px;
+}
+
+input[type="checkbox"] {
+  vertical-align: -1.5px;
+}
+
+
+.container .wrap_grade {
+
+}
+
+.container .item .satisfaction{
+  padding: 0 15px;
+}
+
+.container .item .satisfaction .satisfaction_text {
+  width: 33.3333%;
+  color: #4d526c;
+}
+
+.container .text_middle {
+  text-align: center;
+}
+
+.container .text_right {
+  text-align: right;
+}
+
+.container .wrap_grade_item {
+  height: 63px;
+  line-height: 63px;
+  text-align: center;
+  width: 20%;
+}
+
+.container .grade_item_number {
+  width: 20%;
+  background: url("../images/score_thumb_1.png") no-repeat center;
+  height: 63px;
+  background-size: 45%;
+}
+
+.container .grade_item_active {
+  background: url("../images/score_thumb_2.png") no-repeat center;
+  background-size: 46%;
+
+}
+
+.container .uploaded_img {
+  width: 80px;
+  margin-left: 10px;
+}
+.container .img_wrap {
+  padding: 10px 15px;
+}
+
+.container input[type="text"] {
+  border: 1px #eee solid;
+  display: block;
+  width: 90%;
+  margin: 10px auto 0;
+  font-size: 16px;
+}
+
+.statis .header {
+  padding: 10px 15px 15px;
+}
+
+.statis .header .type {
+  display: inline-block;
+  padding: 0 5px;
+  background-color: #53a4f4;
+  border-radius: 2px;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.statis .header .header_des {
+  color: #746f6f;
+}
+
+.statis .echarts {
+  height: 260px;
+  padding: 10px 0;
+}
+
+.statis .row {
+  background-color: #fff;
+  padding: 10px 15px 0;
+  margin-top: 20px;
+}
+
+.statis  .appendix {
+  background-color: #fff;
+  margin: 20px 15px -20px;
+}
+
+.statis .header .title_text{
+  font-size: 19px;
+}
+
+.statis .header .header_bottom {
+  margin-top: 10px;
+}
+
+.statis .header .org_text:first-child {
+  font-weight: bold;
+}
+
+.fileinput-button {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  -ms-filter: 'alpha(opacity=0)';
+  font-size: 200px !important;
+  direction: ltr;
+  cursor: pointer;
+}
+
+.glyphicon:before {
+  content: "\2b";
+  font-size: 40px;
+}
+
+.glyphicon {
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-bottom: 5px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 15px 15px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px #eee dashed;
+  border-radius: 4px;
+  color: #4d526c;
+  background-color: rgba(192,192,192,0.3);
+}
+
+.download {
+  background-color: #fff;
+}
+
+.download .icon_group {
+  padding-top: 170px;
+  text-align: center;
+}
+
+.download .icon_group .icon {
+  width: 80px;
+}
+
+.download .download_btn {
+  font-size: 16px;
+  line-height: 36px;
+  border-radius: 20px;
+  border: 1px #eee solid;
+  text-align: center;
+  width: 150px;
+  margin: 50px auto 0;
+  padding: 0 20px;
+}
+
+.download .download_btn .platform_logo {
+  width: 30px;
+  height: 30px;
+  background: url("../images/android-128.png") no-repeat center;
+  background-size: 25px 30px;
+  display: inline-block;
+  vertical-align: -8px;
+}
+
+.download .copyright {
+  text-align: center;
+  opacity: .6;
+  margin-top: 70px;
+}
+
+.download a {
+  color: #000;
+}
+
+.dialog {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(211, 217, 226, .6);
+}
+
+.loading {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
+
+.loading:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin-top: -15px;
+  margin-left: -15px;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+  border-top-color: #07d;
+  animation: spinner .6s linear infinite;
+}
+
+.container .location .map_a {
+  display: block;
+  width: 150px;
+  height: 30px;
+  line-height: 30px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 4px;
+  border: solid 1px #53a4f4;
+  color: #53a4f4;
+  padding: 0;
+  cursor: pointer;
+  margin: 10px 0 0 15px;
+  font-size: 14px;
+}
+
+.container .location .map_a .location_ico {
+  width: 16px;
+  height: 16px;
+  vertical-align: -2px;
+  margin-right: 6px;
+  display: inline-block;
+  background: url(../images/gps.png) no-repeat center;
+  background-size: 16px 16px;
+}
+
+.container .warn_loca {
+  color: #8a96a6;
+  padding: 0 15px;
+  font-size: 14px;
+  display: none;
+}
+
+.container .locationing {
+  color: #8a96a6;
+  padding: 0 15px;
+  font-size: 14px;
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
