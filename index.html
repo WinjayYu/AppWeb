@@ -118,6 +118,9 @@
                                 addMap();
                                 renderLocation(top[i]);
                             }
+                            if (top[i].OType === 6) {
+                                renderMultGap(top[i]);
+                            }
                         }
                         $form.append('<div id="submit" class="form_submit"><input type="submit" value="提交"></div>');
                     }
@@ -166,7 +169,7 @@
             // 多选
             function renderCheckBox(data) {
                 var isRequired = data.IsRequired === 0 ? '' : 'required';
-                var template = '<div class="item che"><p class="ques_title">' + data.TTitle + '</p>';
+                var template = '<div class="item che"' +  'PK_TID=' + data.PK_TID + '><p class="ques_title">' + data.TTitle + '</p>';
                 var option = data.Option;
                 var sub = '';
                 for (var i = 0; i < option.length; i++) {
@@ -218,6 +221,24 @@
                 var template = '<div class="item gap" PK_TID="' + data.PK_TID + '"> <p class="ques_title">' + data.TTitle + '</p><input type="text" class="gap_input" PK_TID="' + data.PK_TID + '" ' + isRequired + ' /></div>';
                 $form.append(template);
             }
+
+            //多项填空
+            function renderMultGap(data) {
+                var isRequired = data.IsRequired === 0 ? '' : 'required';
+                var template = '<div class="item mult_gap" PK_TID=' + data.PK_TID + '>' + '<p class="ques_title">' + data.TTitle + '</p>';
+                for(var i=0; i<data.Option.length; i++) {
+                   template += renderSubMultGap(data.Option[i], isRequired, data.PK_TID);
+                }
+                template += '</div>'
+                $form.append(template);
+            }
+
+            function renderSubMultGap(option, isRequired, PK_TID) {
+                var temp = '<p class="little_title">' + option.TTitle + '</p>' +
+                            '<input type="text" class="mult_gap_input" PK_OID=' + option.PK_OID + isRequired + '>'
+                return temp;
+            }
+
 
             // 定位
             function renderLocation(data) {
@@ -273,19 +294,16 @@
             }
             // 多选检查
             try {
-                var checkboxNames = [];
-                $('input[type="checkbox"]:checked').each(function (index, value) {
-                    checkboxNames.push($(value).attr('name'));
-                });
-                for (var i = 0; i < checkboxNames.length; i++) {
-                    var temp = { SelectedOption: [] }
-                    $('input[name=' + checkboxNames[i] + ']:checked').each(function (index, value) {
-                        temp.OType = $(value).attr('OType');
-                        temp.PK_TID = $(value).attr('PK_TID');
-                        temp.SelectedOption.push(checkboxData($(value)));
-                    });
+                $('.che').each(function (i, v) {
+                    var temp = { SelectedOption: [] };
+                    debugger;
+                    temp.OType = 1;
+                    temp.PK_TID = $(this).attr('PK_TID');
+                    $(this).find('input:checked').each(function (index, value) {
+                        temp.SelectedOption.push($(value).attr('value'));
+                    })
                     req.Result.push(temp);
-                }
+                })
             } catch (e) {
                 alert("多项选择解析答案出现异常");
             }
@@ -327,11 +345,33 @@
                 $(".gap").each(function (i, v) {
                     gapData.OType = 2;
                     gapData.PK_TID = $(this).attr('PK_TID');
-                    gapData.InputValue = $(this).find('input').text();
-                    req.Result.push(gapData);
+                    gapData.InputValue = $(this).find('input').val();
+                    if(gapData.InputValue) {
+                        req.Result.push(gapData);
+                    }
                 })
             } catch (e) {
                 alert("填空题答案解析异常");
+            }
+
+            // 多项填空检查
+            try {
+                var multGapData = {SelectedOption: []};
+                $('.mult_gap').each(function (i, v) {
+                    multGapData.OType = 6;
+                    multGapData.PK_TID = $(this).attr('PK_TID');
+                    $(this).find('input').each(function (i, v) {
+                        if($(this).val()) {
+                            multGapData.SelectedOption.push({
+                                PK_OID: $(this).attr('PK_OID'),
+                                OptionInputValue: $(this).val()
+                            });
+                        }
+                    });
+                    req.Result.push(multGapData);
+                })
+            } catch (e) {
+                alert("多项填空答案解析异常")
             }
 
             // 定位统计
@@ -365,6 +405,7 @@
                 return;
             } else {
                 // 发送ajax请求
+//                console.log(req);
                 postAjax(req);
             }
             event.preventDefault();

@@ -389,6 +389,11 @@ input[type="checkbox"] {
   font-size: 14px;
 }
 
+.container .little_title {
+  padding: 10px 0 0 10px;
+  color: #4d526c
+}
+
 @keyframes spinner {
   to {transform: rotate(360deg);}
 }
