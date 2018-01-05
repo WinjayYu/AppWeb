@@ -173,14 +173,21 @@
                 var option = data.Option;
                 var sub = '';
                 for (var i = 0; i < option.length; i++) {
-                    sub += renderSubChe(option[i], data.PK_TID, isRequired, data.OType);
+                    sub += renderSubChe(option[i], data.PK_TID, isRequired, data.OType, data.Option[i].IsInput);
                 }
 
                 $form.append(template + sub + '</div>')
             }
 
-            function renderSubChe(data, name, isRequired, OType) {
-                return '<div class="ques_content"><div class="wrap_input"><input type="checkbox" OType="' + OType + '" PK_TID="' + name + '" name=' + name + ' value="' + data.PK_OID + ' ' + isRequired + '" > ' + data.TTitle + '</div></div>';
+            function renderSubChe(data, name, isRequired, OType, isInput) {
+
+                var inputEle = '<input type="text" class="che_input" PK_TID=' + name + '>';
+                var template =  '<div class="ques_content"><div class="wrap_input"><input type="checkbox" OType="' + OType + '" PK_TID="' + name + '" name=' + name + ' value="' + data.PK_OID + ' ' + isRequired + '" > ' + data.TTitle + '</div>';
+                if(isInput) {
+                  template += inputEle;
+                }
+                template += '</div>';
+                return template;
             }
 
             // 评分
@@ -276,7 +283,7 @@
                         $('<img class="uploaded_img fl" />').attr('src', data.result.Data[0]).appendTo('.img_wrap');
                     }
                 }
-            });
+            })
         }
         $("#form_data").submit(function (event) {
             $('.dialog').show();
@@ -296,11 +303,15 @@
             try {
                 $('.che').each(function (i, v) {
                     var temp = { SelectedOption: [] };
-                    debugger;
                     temp.OType = 1;
                     temp.PK_TID = $(this).attr('PK_TID');
                     $(this).find('input:checked').each(function (index, value) {
-                        temp.SelectedOption.push($(value).attr('value'));
+                        var $sib = $(value).parent().siblings()
+                        if($sib.length !== 0 && $sib.val() !== "") {
+                          temp.SelectedOption.push({PK_OID: $(value).attr('value'), OptionInputValue: $sib.val()});
+                        } else {
+                            temp.SelectedOption.push({PK_OID: $(value).attr('value')});
+                        }
                     })
                     req.Result.push(temp);
                 })
@@ -405,7 +416,6 @@
                 return;
             } else {
                 // 发送ajax请求
-//                console.log(req);
                 postAjax(req);
             }
             event.preventDefault();
