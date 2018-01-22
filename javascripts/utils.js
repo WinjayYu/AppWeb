@@ -1,6 +1,7 @@
 /**
  * Created by billyu on 2017/12/19.
  */
+
 function iosOrAndroid(){
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 

@@ -15,15 +15,31 @@
   <div class="container download">
     <div class="icon_group">
       <img src="./images/icon_1024.png" alt="" class="icon">
-      <p class="app_name">服务监测</p>
+      <p class="app_name">服务质量监测</p>
     </div>
     <div class="download_btn">
-      <a href="http://surveyadmin.lanshaoqi.cn/UploadFiles/fwzljc.apk">
-        <span class="platform_logo"></span>
-        <span class="download_text">Android版下载</span>
+      <a id="url" href="">
+        <span class="platform_logo" id="logo"></span>
+        <span class="download_text"><span id="platform_text"></span>版下载</span>
       </a>
     </div>
     <div class="copyright">Copyright ©  All Rights Reserved</div>
   </div>
+  <script src="javascripts/utils.js"></script>
+  <script>
+    var type = iosOrAndroid();
+    var urlEle = document.getElementById('url');
+    var platform = document.getElementById('platform_text');
+    var logo = document.getElementById('logo');
+    if (type === 'iOS') {
+      urlEle.href = 'https://baidu.com';
+      platform.innerHTML = 'IOS';
+      logo.style.background = 'url("./images/IOS.png") no-repeat center/30px 30px'
+    } else if (type === 'Android') {
+      urlEle.href = 'http://surveyadmin.lanshaoqi.cn/UploadFiles/fwzljc.apk';
+      platform.innerHTML = 'Android';
+      logo.style.background = 'url("./images/android-128.png") no-repeat center/25px 30px'
+    }
+  </script>
 </body>
 </html>
