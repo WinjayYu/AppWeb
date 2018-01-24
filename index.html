@@ -43,6 +43,8 @@
                 renderPage();
             }
         }
+
+
         // 接收app缓存的表单数据
         function acceptSubmitData(au, req) {
             Auth = au;
@@ -139,7 +141,7 @@
 
             // 评价对象
             function renderTarget(data) {
-                var template = '<div class="ques_content"><div class="wrap_input"><input class="hospital_val" PK_EID="' + data.PK_EID + '" EName="' + data.EName + '" type="radio" name="target" required> ' + data.EName + '</div></div>';
+                var template = '<div class="ques_content"><div class="wrap_input"><input class="hospital_val" PK_EID="' + data.PK_EID + '" EName="' + data.EName + '" type="radio" name="target" required' + ' id=' + data.PK_EID + '><label for=' + data.PK_EID + '>' + data.EName + '</label></div></div>';
                 $target.append(template);
             }
 
@@ -163,7 +165,7 @@
 
             // 单选子选项
             function renderSubRad(data, name, isRequired, OType) {
-                return '<div class="ques_content"><div class="wrap_input"> <input type="radio" PK_TID="' + name + '" OType="' + OType + '" name="' + name + '" value="' + data.PK_OID + '" ' + isRequired + '> ' + data.TTitle + '</div></div>';
+                return '<div class="ques_content"><div class="wrap_input"> <input type="radio" PK_TID="' + name + '" OType="' + OType + '" name="' + name + '" value="' + data.PK_OID + '" ' + 'id=' + data.PK_OID + isRequired + '><label for=' + data.PK_OID + '>' + data.TTitle + '</label></div></div>';
             }
 
             // 多选
@@ -261,8 +263,8 @@
         }
         // 监听打分
         function listenGrade() {
-            $('body').on('click', '.grade_item_number', function (e) {
-
+            $(document).on('click', '.grade_item_number', function (e) {
+                e.preventDefault();
                 $(this).siblings().removeClass('grade_item_active');
 
                 $(this).addClass('grade_item_active');

@@ -155,12 +155,13 @@ input[type="checkbox"] {
   background: url("../images/score_thumb_1.png") no-repeat center;
   height: 63px;
   background-size: 45%;
+  cursor: pointer;
 }
 
 .container .grade_item_active {
   background: url("../images/score_thumb_2.png") no-repeat center;
   background-size: 46%;
-
+  cursor: pointer;
 }
 
 .container .uploaded_img {
